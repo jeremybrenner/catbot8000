@@ -96,25 +96,7 @@ class BotStreamer(tweepy.StreamListener):
 			for image in status.entities['media']:
 				tweet_image(image['media_url'], username, status_id)
 
-# Listen to @catbot8000 for events
+# Listen to @catpicbot8000 for events
 myStreamListener = BotStreamer()
 stream = tweepy.Stream(auth, myStreamListener)
 stream.filter(track=['@catpicbot8000'])
-
-
-
-# 		img = Image.open('./cats/cat1.jpg')
-# img2 = Image.open('./cats/cat2.jpg')
-
-# img = img.convert("RGBA")
-# img = img.resize(img2.size)
-
-# pixdata = img.load()
-
-# width, height = img2.size
-
-# for y in xrange(height):
-#     for x in xrange(width):
-#         pixdata[x, y] = (pixdata[x, y][0], pixdata[x, y][1], pixdata[x, y][2], 50)
-
-# img.save("test.png", "PNG")
