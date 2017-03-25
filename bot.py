@@ -36,6 +36,8 @@ def tweet_image(url, username, status_id):
 
 		catify(post_temp,cat_path)
 
+		print('\n *** SUCCESS! Replying to ' + username + ' with result *** \n')
+
 		api.update_with_media('result.png', status='@{0}'.format(username), in_reply_to_status_id=status_id)
 
 	else: print("Unable to download image from bot request")
@@ -44,7 +46,7 @@ def catify(post_img,cat_img):
 
 	print('\n=== Attempting to merge images ===')
 	print('* Post => ' + post_img)
-	print('* Cat => ' + cat_img)
+	print('* Cat  => ' + cat_img)
 	print('\n')
 
 	# Open the post picture, and cat image
@@ -66,7 +68,7 @@ def catify(post_img,cat_img):
 	# Make cat picture into a transparent layer and save it
 	for y in xrange(height):
 		for x in xrange(width):
-			pic_data[x, y] = (pic_data[x, y][0], pic_data[x, y][1], pic_data[x, y][2], 100)
+			pic_data[x, y] = (pic_data[x, y][0], pic_data[x, y][1], pic_data[x, y][2], 150)
 
 	cat.save('rdy_cat.png', 'PNG')
 
@@ -86,9 +88,7 @@ class BotStreamer(tweepy.StreamListener):
 		status_id = status.id
 
 		print('\n === Incoming post to @catpicbot8000 ===')
-		print('* Username => ' + username)
-		print('* Status =>')
-		print(status)
+		print('* Username  => ' + username)
 		print('\n')
 
 		# Extract media from tweets without having to parse all text 
