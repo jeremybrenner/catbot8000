@@ -45,8 +45,8 @@ def tweet_image(url, username, status_id):
 def catify(post_img,cat_img):
 
 	print('\n=== Attempting to merge images ===')
-	print('* Post => ' + post_img)
-	print('* Cat  => ' + cat_img)
+	print('* Original post image => ' + post_img)
+	print('* Selected cat image  => ' + cat_img)
 	print('\n')
 
 	# Open the post picture, and cat image
@@ -88,7 +88,7 @@ class BotStreamer(tweepy.StreamListener):
 		status_id = status.id
 
 		print('\n === Incoming post to @catpicbot8000 ===')
-		print('* Username  => ' + username)
+		print('* Posted by user  => ' + username)
 		print('\n')
 
 		# Extract media from tweets without having to parse all text 
@@ -99,4 +99,4 @@ class BotStreamer(tweepy.StreamListener):
 # Listen to @catpicbot8000 for events
 myStreamListener = BotStreamer()
 stream = tweepy.Stream(auth, myStreamListener)
-stream.filter(track=['@catpicbot8000'])
+stream.filter(track=[s.bot_name])
